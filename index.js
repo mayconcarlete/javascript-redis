@@ -10,6 +10,11 @@ const { createClient } = require('redis')
 
   await client.set('name', 'maykeropsq');
   await client.set('lastname', 'carlete');
-  const value = await client.get('name');
+
+  // define um tempo de expiracao para a chave
+  await client.set('nickname', 'pesk')
+  await client.expire('nickname', 3)
+
+  const value = await client.get('nickname');
   console.log(value)
 })();
