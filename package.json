@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig":{
+    "ignore": ["test/*"]
   },
   "repository": {
     "type": "git",
@@ -17,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/mayconcarlete/javascript-redis/issues"
   },
-  "homepage": "https://github.com/mayconcarlete/javascript-redis#readme"
+  "homepage": "https://github.com/mayconcarlete/javascript-redis#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
