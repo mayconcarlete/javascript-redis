@@ -1,20 +1,12 @@
 const { createClient } = require('redis')
 
-;
-(async () => {
-  const client = createClient(6379, '127.0.0.1')
+const client = createClient(6379, '127.0.0.1')
 
-  client.on('error', (err) => console.log('Redis Client Error', err));
+client.on('error', err => console.log(`Error: ${err}`))
 
-  await client.connect();
+client.on('connect', data => console.log(`Connected: ${data}`))
 
-  await client.set('name', 'maykeropsq');
-  await client.set('lastname', 'carlete');
+client.on('ready', data => console.log(`Is ready: true ${data}`))
 
-  // define um tempo de expiracao para a chave
-  await client.set('nickname', 'pesk')
-  await client.expire('nickname', 3)
 
-  const value = await client.get('nickname');
-  console.log(value)
-})();
+module.exports = client
