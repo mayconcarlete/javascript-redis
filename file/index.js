@@ -17,6 +17,5 @@ const read = () => new Promise((resolve, reject) => {
   async() => {
     const data = await read()
     console.log(data)
-    console.log('adter promise')
   }
 )()
