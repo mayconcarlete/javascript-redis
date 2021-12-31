@@ -15,13 +15,16 @@ const pro = () => new Promise((resolve, reject) => {
 
 const setValue = ({key, value}) => new Promise((resolve, reject) => {
   const setValue = client.set(key, value)
-  resolve(setValue)
+  const setHvalue = client.hSet("userhash:1001", {"name": "Alice"})
+
+  resolve(setHvalue)
 })
 ;
 (
   async () => {
     console.log(await pro())
-    console.log(await setValue({key: 'name', value: 'maykerops'}))
-
+    console.log(await setValue({key: 'a', value:1}))
+    const name = await client.hGet('name')
+    console.log(name)
   }
 )()
